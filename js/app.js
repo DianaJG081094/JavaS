@@ -6,6 +6,8 @@ var Calculadora = {
     this.metodo_prender();
     this.metodo_punto();
     this.metodo_signo();
+    this.metodo_operacion();
+    this.metodo_igual();
   },
 
   zoom: function(event){
@@ -51,7 +53,7 @@ var Calculadora = {
     }else if(idInt !=0  && numP == 0){
       num = id;
       pantalla.innerHTML=num;
-    }else if(numP != 0){
+    }else if(numP != 0 && num.length<8){
       var numn = num + id;
       pantalla.innerHTML=numn;
     }
@@ -130,6 +132,83 @@ signo: function(){
       var nnumS = nnum.toString();
       pantalla.innerHTML = nnumS;
       }
+  },
+
+  metodo_operacion: function(){
+    for (var i = 0; i< document.getElementsByClassName("tecla").length; i++){
+      if( i == 18 || i == 11 || i == 7 || i == 3){
+        document.getElementsByClassName("tecla")[i].onclick= this.operaciones;
+      }
+    }
+  },
+
+  operaciones: function(event){
+    var operacion = event.target.id;
+    var pantalla = document.getElementById("display");
+    var op1 = pantalla.innerHTML;
+    sessionStorage.setItem('op1',JSON.stringify(op1));
+    pantalla.innerHTML="";
+    var op = 0;
+    switch (operacion) {
+      case "mas":
+            op = 1;
+      break;
+
+      case "menos":
+            op = 2;
+      break;
+
+      case "por":
+            op = 3;
+      break;
+
+      case "dividido":
+            op = 4;
+      break;
+    }
+    sessionStorage.setItem('op',JSON.stringify(op));
+  },
+
+  metodo_igual: function(){
+    document.getElementsByClassName("tecla")[17].onclick= this.resolver;
+  },
+
+  resolver: function(){
+    var pantalla = document.getElementById("display");
+    var op2 = pantalla.innerHTML;
+    var op2INT = Number(op2);
+    sessionStorage.setItem('op2',JSON.stringify(op2));
+    var operacion = JSON.parse(sessionStorage.op);
+    var op1 = JSON.parse(sessionStorage.op1);
+    var op1INT = Number(op1);
+    var result = 0;
+    var resultF = 0;
+    switch (operacion) {
+      case 1:
+        result = op1INT + op2INT;
+        resultF = result.toString();
+        pantalla.innerHTML = resultF;
+      break;
+      case 2:
+        result = op1INT - op2INT;
+        resultF = result.toString();
+        pantalla.innerHTML = resultF;
+      break;
+      case 3:
+        result = op1INT * op2INT;
+        resultF = result.toString();
+        pantalla.innerHTML = resultF;
+      break;
+      case 4:
+        result = op1INT / op2INT;
+        resultF = result.toString();
+        pantalla.innerHTML = resultF;
+      break;
+
+    }
+
+
+
   }
 
 
