@@ -187,29 +187,58 @@ signo: function(){
       case 1:
         result = op1INT + op2INT;
         resultF = result.toString();
-        pantalla.innerHTML = resultF;
+        var rf = "";
+        if(resultF.length < 8 ){
+            pantalla.innerHTML = resultF;
+        }else {
+          for(i = 0; i <8; i++){
+            rf = rf +resultF[i];
+          }
+         pantalla.innerHTML = rf;
+        }
       break;
       case 2:
         result = op1INT - op2INT;
         resultF = result.toString();
-        pantalla.innerHTML = resultF;
+        var rf = "";
+        if(resultF.length < 8 ){
+            pantalla.innerHTML = resultF;
+        }else {
+          for(i = 0; i <8; i++){
+            rf = rf + resultF[i];
+          }
+         pantalla.innerHTML = rf;
+        }
       break;
       case 3:
         result = op1INT * op2INT;
         resultF = result.toString();
-        pantalla.innerHTML = resultF;
+        var rf = "";
+        if(resultF.length < 8 ){
+            pantalla.innerHTML = resultF;
+        }else {
+          for(i = 0; i <8; i++){
+            rf = rf + resultF[i] ;
+          }
+         pantalla.innerHTML = rf;
+        }
       break;
       case 4:
         result = op1INT / op2INT;
         resultF = result.toString();
-        pantalla.innerHTML = resultF;
+        var rf = "";
+        if(resultF.length < 8 ){
+            pantalla.innerHTML = resultF;
+        }else {
+          for(i = 0; i <8; i++){
+            rf = rf+ resultF[i] ;
+          }
+         pantalla.innerHTML = rf;
+        }
       break;
 
     }
 
-
-
   }
-
 
 }
