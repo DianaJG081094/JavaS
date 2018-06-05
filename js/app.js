@@ -1,14 +1,7 @@
 
+
 var Calculadora = {
-  init: function(){
-    this.metodo_teclas();
-    this.metodo_pantalla();
-    this.metodo_prender();
-    this.metodo_punto();
-    this.metodo_signo();
-    this.metodo_operacion();
-    this.metodo_igual();
-  },
+
 
   zoom: function(event){
     var tecla_DOM = event.target;
@@ -241,4 +234,15 @@ signo: function(){
 
   }
 
-}
+};
+
+(function Init(){
+ Calculadora.metodo_teclas();
+ Calculadora.metodo_pantalla();
+ Calculadora.metodo_pantalla();
+ Calculadora.metodo_prender();
+ Calculadora.metodo_punto();
+ Calculadora.metodo_signo();
+ Calculadora.metodo_operacion();
+ Calculadora.metodo_igual();
+})();
